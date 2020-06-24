@@ -12,15 +12,15 @@ A small library to (De)serialize classes in Java
 	    public MyData(int _data) {
 	        data = _data;
 	    }
-	      
+	    
+	    @Override
+	    public void serialize(DataWriter writer) {
+	        writer.append(data);
+	    }
+	    
 	    @Override
 	    public void deserialize(DataReader reader) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 	        data = reader.readInt();
-	    }
-	      
-	    @Override
-	    public void serialize(DataWriter writer) {
-	        writer.append(baseData);
 	    }
     }
   
