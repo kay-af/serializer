@@ -2,8 +2,6 @@ package com.fridworks.serializer;
 
 import com.fridworks.serializer.utils.DataReader;
 import com.fridworks.serializer.utils.DataWriter;
-import com.sun.istack.internal.logging.Logger;
-import java.util.logging.Level;
 
 /*
  * Copyright (C) 2020 AFRIDI KAYAL
@@ -46,9 +44,6 @@ public class Serializer {
             ((Serializable) instance).deserialize(reader);
 
             if (reader.hasData()) {
-                Logger.getLogger(Serializer.class).log(Level.WARNING, "Reader still has data in it after serialization\n"
-                        + "An inherited type might have been deserialized as super type\n"
-                        + "Use typed serialization to overcome this problem or define custom logic in Serializable implemented methods to determine proper type");
                 throw new SerializationException("Possible type mismatch",
                         "Check if the type provided is actual type of the serialized bytes provided", data.getClass());
             }
